@@ -1,12 +1,28 @@
 # NOTICE
 
-## ui-baseline 참고 출처
+## ui-baseline·design-direction 참고 출처
 
-`skills/ui-baseline/SKILL.md`는 아래 공개 규칙을 참고해 한국어로 새로 쓴 것입니다. 원문 문장은 옮기지 않았습니다.
+`skills/ui-baseline/SKILL.md`와 `skills/design-direction/`(SKILL.md, references)는 아래 공개 규칙과 문서를 참고해 한국어로 새로 쓴 것입니다. 원문 문장은 옮기지 않았습니다. 디자인 시스템에서는 공개된 수치(글자 크기, 간격, 행 높이, 일부 색 값)만 빌렸고, 프리셋 색 대비는 WCAG 2.x 공식으로 직접 계산했습니다.
 
 - vercel-labs/web-interface-guidelines (MIT) — https://github.com/vercel-labs/web-interface-guidelines
 - ibelick/ui-skills `baseline-ui`, `fixing-accessibility` (MIT) — https://github.com/ibelick/ui-skills
 - Community-Access/accessibility-agents `tables-data-specialist` (MIT) — https://github.com/Community-Access/accessibility-agents
+- anthropics/skills `frontend-design` (Apache-2.0) — https://github.com/anthropics/skills
+- pbakaus/impeccable (Apache-2.0) — https://github.com/pbakaus/impeccable
+- Dammyjay93/interface-design (MIT) — https://github.com/Dammyjay93/interface-design
+- 0xdesign/design-plugin (MIT) — https://github.com/0xdesign/design-plugin
+- nextlevelbuilder/ui-ux-pro-max-skill (MIT) — https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+- IBM Carbon Design System (코드 Apache-2.0) — https://carbondesignsystem.com
+- GitHub Primer primitives (MIT) — https://primer.style
+- Microsoft Fluent 2 (fluentui 코드 MIT) — https://fluent2.microsoft.design
+- Radix Colors (MIT) — https://www.radix-ui.com/colors
+- shadcn/ui 테마 변수 (MIT) — https://ui.shadcn.com/docs/theming
+- W3C WCAG 2.2 — https://www.w3.org/TR/WCAG22/
+- 디지털정부 디자인 시스템 KRDS (참고, 원문 미사용. 라이선스 미확인으로 공개 수치와 색 토큰 값만 사용) — https://www.krds.go.kr
+- Material Design 3 (참고, 원문 미사용) — https://m3.material.io
+- Apple Human Interface Guidelines (참고, 원문 미사용) — https://developer.apple.com/design/human-interface-guidelines
+- 레퍼런스 갤러리(Mobbin, Refero, Recent, Land-book, Lapa Ninja, SaaS Landing Page, Awwwards, Siteinspire, Dribbble)는 이름과 용도만 적었고 화면·문구를 가져오지 않았습니다.
+- 프리셋에 적은 글꼴(Pretendard, SUIT, Noto Sans KR, Noto Serif KR, Gowun Batang, IBM Plex Sans KR, Do Hyeon, Space Grotesk, Source Serif 4, JetBrains Mono, Atkinson Hyperlegible Next)은 SIL OFL입니다. 글꼴 파일은 이 저장소에 들어 있지 않습니다. Pretendard GOV는 라이선스를 따로 확인하지 못했습니다.
 
 ## 보안·테스트 스킬 참고 출처
 

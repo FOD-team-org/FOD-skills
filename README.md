@@ -88,7 +88,8 @@
 | default-stack | 스택이 정해지지 않았을 때 React·NestJS·PostgreSQL 기본 구조 |
 | design-doc | 코드보다 먼저 DESIGN.md, 끝날 때 코드와 맞추기 |
 | judgment | 요구사항에 답이 없는 판단 나누기(DECISIONS.md·ASSUMPTIONS.md) |
-| ui-baseline | 실서비스 수준의 화면 디자인 기준 |
+| design-direction | 화면 디자인 방향(색·글꼴·밀도 프리셋)이 정해지지 않았을 때 상황에 맞게 고르기 |
+| ui-baseline | 테마와 무관한 화면 기본기 |
 | http-roundtrip-test | 실제 HTTP 요청으로 도는 API 테스트 |
 | data-edge-tests | CSV·JSON 읽기·집계에서 자주 틀리는 지점 |
 | data-exposure-guard | 응답·내보내기·로그의 고객 데이터 노출 막기 |

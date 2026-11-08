@@ -17,7 +17,7 @@
 
 ## 스킬
 아래 일을 할 때 해당 스킬을 읽는다. 해당하는 일이 없으면 읽지 않는다.
-- 화면을 만들거나 고칠 때: ui-baseline
+- 화면을 만들거나 고칠 때: design-direction으로 방향을 정한 뒤 ui-baseline
 - API 테스트를 만들 때: http-roundtrip-test
 - 자료를 읽고 묶고 집계할 때: data-edge-tests
 - 고객 데이터를 응답·파일·로그로 내보낼 때: data-exposure-guard
