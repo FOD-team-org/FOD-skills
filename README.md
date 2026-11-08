@@ -1,6 +1,6 @@
 # FOD-skills
 
-여러 프로젝트(영상·SNS·블로그·앱 개발·AI 코딩)에서 쓴 작업 방식을 누구나 깔아 쓸 수 있게 일반화한 스킬 모음이다. Claude Code와 Codex가 같은 파일을 쓴다.
+여러 프로젝트(영상·SNS·블로그·앱 개발·자동매매·AI 코딩)와 여러 기기(Windows·macOS)에서 쓴 작업 방식을 누구나 깔아 쓸 수 있게 일반화한 스킬 모음이다. Claude Code와 Codex가 같은 파일을 쓴다.
 
 ## 우선순위
 | 순서 | 무엇 |
@@ -44,13 +44,16 @@ cd FOD-skills && ./install.sh --target codex --project <앱 폴더>
 | evidence-status-report | 진행·상태·원인 질문에 답할 때, 마지막 보고 |
 | project-docs | 문서 체계 만들기, 판단대기·runbook, 문서와 실제가 어긋날 때 |
 | user-task-guide | 사람이 직접 할 일(로그인, 결제, 콘솔 설정) 안내 |
+| agent-resource-hygiene | 작업·루프가 끝날 때 내가 띄운 프로세스·빌드 산출물 정리 |
 
 ### 위임과 검수
 | 스킬 | 언제 |
 |---|---|
 | delegation-loop | 하위 에이전트에 일 맡기기, 긴 배치 감독, 반납 직후 확인 |
 | codex-delegation | Codex CLI에 구현·검수·생성 맡기기 |
-| multi-ai-review | 여러 모델 토의, 검수 결과 채택 필터 |
+| multi-ai-review | 여러 모델 토의, 검수 결과 채택 필터, 코드 교차 검수 라운드 |
+| scoped-change-verification | 범위를 지킨 코드 수정, 검증 근거 3단계 표기 |
+| agent-regression-harness | 에이전트 지침·모델 변경 뒤 행동 회귀와 가드 시험 |
 
 ### 조사와 기획
 | 스킬 | 언제 |
@@ -72,19 +75,41 @@ cd FOD-skills && ./install.sh --target codex --project <앱 폴더>
 | short-video-pipeline | 짧은 영상 한 편의 단계·게이트·프레임 싱크 |
 | asset-rights-check | 외부 자산 권리 확인, 신고 대응 |
 | blog-post-pipeline | 정보 글 한 편의 초안부터 공개 후 확인까지 |
+| media-personal-data-masking | 공개 영상·이미지의 개인정보 가림 |
+| paid-ads-ops | 유료 광고 생성·교체·점검 |
 
 ### 운영
 | 스킬 | 언제 |
 |---|---|
 | safe-publish | 게시 도구 기준, 중복 방지, 실패 뒤 규칙 |
 | routine-ops | 예약 작업 등록·백업·멈춤 감지·숨김 실행 |
+| scheduled-job-design | 무인 예약 작업 설계, 시간 예산, 실패 정지, 수율 보정, 등록부 일괄 변경 |
+| launchd-ops | macOS launchd 등록·재등록·해제, TCC 권한 래퍼 |
+| shadow-lane-cutover | 운영 파이프라인을 관찰 경로로 먼저 돌린 뒤 바꿔 넣기 |
+| console-cua-automation | 웹 콘솔·앱 화면 자동 조작의 금지 행동과 확인 |
 | safe-cleanup | 디스크·산출물·프로세스 정리, 폴더 이동 |
 | windows-env-pitfalls | Windows의 한글 인코딩·셸·AppData 가상화 함정 |
+| macos-env-pitfalls | macOS의 zsh·BSD 도구·iCloud·TCC·샌드박스 빌드 함정 |
 | cross-device-handoff | 다른 PC로 인계, 폰으로 산출물 전달 |
 | external-tool-vetting | 외부 도구·플러그인·스킬 도입 전 점검 |
 | service-access-hardening | 지인·팀용 비공개 서비스의 접근 보호와 비용 보호 |
 | privacy-compliance-check | 개인정보 흐름표, 처리방침·스토어 표시 대조 |
 | android-device-smoke | 안드로이드 실기기 설치·흐름 확인 |
+
+### 자동매매
+| 스킬 | 언제 |
+|---|---|
+| trading-automation-safety | 주문 봇의 관찰·실주문 분리, 주문 게이트, 사고 대응 |
+| backtest-validation | 전략 백테스트 기준 고정, 표본 밖 검증, 판정 |
+
+### 개발 공통
+| 스킬 | 언제 |
+|---|---|
+| git-pr-merge-loop | push·PR·병합을 상시로 맡긴 저장소에서 기능 하나씩 끝내기 |
+| multi-repo-workspace | 여러 저장소 작업 공간, 정본 스냅샷 동기화 |
+| prod-db-migration | 운영 DB 스키마 변경의 DB·코드 순서, 파괴적 구문·자동 마이그레이션 점검 |
+| app-store-release | iOS·안드로이드 스토어 제출, 심사 반려 대응, 출시 QA |
+| flutter-test-pitfalls | Flutter 테스트의 전역 상태·대기·비교 함정 |
 
 ### 개발 플레이북 (웹 서비스 빌드)
 | 스킬 | 언제 |
@@ -129,9 +154,9 @@ cd FOD-skills && ./install.sh --target codex --project <앱 폴더>
 ## 로드맵
 | 단계 | 내용 |
 |---|---|
-| 1 (지금) | Windows PC의 작업 방식을 스킬로 정리 |
-| 2 | macOS 기기들의 작업 방식을 같은 규격으로 합치기 |
-| 3 | 스킬 모음을 하나의 하네스로 묶기 |
+| 1 (완료) | Windows PC의 작업 방식을 스킬로 정리 |
+| 2 (지금) | macOS 기기들의 작업 방식을 같은 규격으로 합치기. 첫 기기분 반영(새 스킬 17개, 기존 스킬 15개 보강) |
+| 3 | 스킬 모음을 하나의 하네스로 묶기. 판단대기, 승인 항목, 완료 증거, 커밋에 묶인 검수, 메모리 감시를 이미 갖춘 fod-harness가 후보 |
 
 ## 기여 규칙
 - 스킬 한 개는 `skills/<name>/SKILL.md` 한 파일. frontmatter는 `name`, `description` 두 줄.

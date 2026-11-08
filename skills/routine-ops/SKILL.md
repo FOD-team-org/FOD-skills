@@ -5,6 +5,8 @@ description: 예약 작업(에이전트 루틴, OS 작업 스케줄러)을 등�
 
 # 예약 작업 운영
 
+작업을 어떻게 짤지(실행 방식, 시간 예산, 실패 정지, 등록부 일괄 변경)는 scheduled-job-design, macOS 등록은 launchd-ops를 따른다.
+
 ## 언제
 - 새 루틴·스케줄러 작업을 등록할 때
 - 루틴이 안 도는 것 같거나 결과가 안 쌓일 때
@@ -64,4 +66,4 @@ description: 예약 작업(에이전트 루틴, OS 작업 스케줄러)을 등�
 - 요청 없는 모델·설정 변경
 
 ## 관련 스킬
-operating-principles, safe-publish, safe-cleanup, windows-env-pitfalls, performance-insights
+operating-principles, safe-publish, safe-cleanup, windows-env-pitfalls, performance-insights, scheduled-job-design, launchd-ops

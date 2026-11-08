@@ -27,6 +27,9 @@ description: 디스크 용량 정리, 프로젝트 폴더 정리, 큰 폴더 이
 5. 사람이 고른 항목만 지운다. 지운 목록을 매니페스트 파일로 남긴다.
 6. 전후 여유 공간을 재서 보고한다.
 - 시스템 설정 변경(최대 절전 파일 해제 등)은 관리자 승인을 받고, 되돌리는 명령을 함께 알린다.
+- 용량은 OS에 맞는 방법으로 잰다. macOS(APFS)는 `du` 합이 아니라 `df`로 본다(macos-env-pitfalls).
+- 앱이 관리하는 데이터는 앱의 공식 삭제 기능·API로 지운다. 내부 DB 파일을 직접 지우지 않는다.
+- 되돌릴 수 없는 삭제는 등급표에 "되돌릴 수 없음"으로 표시한다. 클라우드로 먼저 백업했으면 원본과 백업의 sha256 대조 결과를 붙인다.
 
 ## 프로젝트 산출물 정리
 - 보존: 완성본, 메타·로그·설정(json·md·txt·csv·자막), 게시 중복 확인에 쓰는 파일, 사람이 쓰는 결과 폴더
@@ -68,4 +71,4 @@ description: 디스크 용량 정리, 프로젝트 폴더 정리, 큰 폴더 이
 - 정체를 모르는 프로세스 종료
 
 ## 관련 스킬
-operating-principles, routine-ops, windows-env-pitfalls
+operating-principles, routine-ops, windows-env-pitfalls, macos-env-pitfalls, agent-resource-hygiene

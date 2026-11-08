@@ -34,6 +34,12 @@ description: 로그인·결제·키 발급·기기 조작·GUI 설정처럼 사�
 - 안내가 틀렸던 것이 확인되면 문서에 정정 표시를 남기고 고친다.
 - 안내 문서는 프로젝트의 가이드 폴더에 저장한다(project-docs).
 
+## 여러 사람에게 물을 때
+- 답할 사람마다 따로 묶는다(메신저면 사람별 스레드). 개발 용어와 파일 경로 없이 질문 전문을 쓴다.
+- 보고·질문은 사람이 정한 채널로만 보낸다.
+- 답을 기다리는 동안 관계없는 일은 계속한다. 언제 어떤 방법으로 답을 확인할지(예: 30분마다 스레드 확인) 먼저 알린다.
+- 질문 번호와 열린 항목 관리는 judgment를 따른다.
+
 ## 확인
 - 사람이 문서만 보고 처음부터 끝까지 따라 할 수 있다.
 - 문서에 비밀값 원문, 계정 ID, 키가 없다.
@@ -45,4 +51,4 @@ description: 로그인·결제·키 발급·기기 조작·GUI 설정처럼 사�
 - 확인 명령 없이 "이제 될 것"으로 끝내지 않는다.
 
 ## 관련 스킬
-project-docs, android-device-smoke, operating-principles
+project-docs, android-device-smoke, operating-principles, console-cua-automation, judgment

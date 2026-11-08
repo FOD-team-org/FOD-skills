@@ -40,6 +40,8 @@ description: 메인 에이전트가 하위 에이전트에게 구현·배치·�
 - 로그가 끊겼다고 죽었다고 단정하지 않는다. 디스크 산출물과 프로세스로 확인한다.
 - 멈출 때는 에이전트만 끄지 않는다. 남은 자식 프로세스를 실행기부터 서버 순으로 정리하고 포트가 비었는지 본다.
 - 보류를 지시할 때는 보류 범위와 해제 조건을 같이 준다.
+- 하위 작업자의 강제 시간 제한을 먼저 확인하고, 일을 그 안에 끝날 크기로 자른다. 반납하지 않은 작업자는 TIMEOUT으로 표시한다. 다른 작업자의 결과를 복제해 칸을 채우지 않는다.
+- 작업이 끝나면 내가 띄운 프로세스·빌드 산출물을 정리한다(agent-resource-hygiene).
 
 ## 반납 직후 확인
 1. 산출물이 있는지, 수정 시각이 이번 작업 시각인지 본다.
@@ -56,4 +58,4 @@ description: 메인 에이전트가 하위 에이전트에게 구현·배치·�
 - 게시·발송·삭제를 하위 에이전트에게 넘기지 않는다.
 
 ## 관련 스킬
-operating-principles, codex-delegation, evidence-status-report, visual-output-qa, safe-publish
+operating-principles, codex-delegation, evidence-status-report, visual-output-qa, safe-publish, scoped-change-verification, agent-resource-hygiene

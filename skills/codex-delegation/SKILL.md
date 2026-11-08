@@ -23,6 +23,9 @@ description: Codex CLI에게 구현·교차 검수·이미지 생성·화면 조
 5. 오래 걸리는 호출은 백그라운드로 띄우고, 완료 알림 뒤 결과 파일을 읽는다.
 6. 무거운 요청은 쪼갠다. 다음 라운드는 바뀐 부분만 보낸다.
 7. 샌드박스가 막는 일(특정 경로 쓰기, 네트워크 측정)은 메인 셸이나 다른 실행자로 돌린다.
+8. 브리프에 "전체 테스트 묶음을 돌리지 않는다. 바뀐 파일의 테스트만 돌린다"를 넣는다. 같은 일에 Codex 세션을 여러 개 띄우지 않고, 한 세션을 이어 쓴다.
+9. 샌드박스 안에서 테스트가 권한 오류로 안 돌면 통과로 쓰지 말고 "실행 못 함"으로 보고하게 한다(scoped-change-verification).
+10. 화면·콘솔 조작은 console-cua-automation을 따른다.
 
 ## 용도별로 더할 것
 | 용도 | 브리프에 더할 것 |
@@ -48,4 +51,4 @@ description: Codex CLI에게 구현·교차 검수·이미지 생성·화면 조
 - 사람이 Codex에 맡기지 말라고 한 영역은 맡기지 않는다.
 
 ## 관련 스킬
-delegation-loop, multi-ai-review, paced-research, operating-principles
+delegation-loop, multi-ai-review, paced-research, operating-principles, console-cua-automation, scoped-change-verification
