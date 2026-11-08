@@ -1,4 +1,3 @@
-node_modules/
-.env
-*.log
+tools/denylist.txt
 .DS_Store
+__pycache__/

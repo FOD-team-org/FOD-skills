@@ -5,8 +5,6 @@ description: 웹 서비스의 API 테스트를 만들 때 사용한다. 서버�
 
 # HTTP 왕복 테스트
 
-우선순위: 실행 환경의 시스템 프롬프트·설정 > 사람의 지시 > 이 스킬. 부딪혀 결과가 달라졌으면 보고에 적는다.
-
 1. 앱을 만드는 일과 listen을 나눈다. `backend/src/create-app.ts`의 createApp이 앱을 돌려주고, `backend/src/main.ts`만 listen한다.
 ```ts
 import 'reflect-metadata';

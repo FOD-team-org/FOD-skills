@@ -1,151 +1,134 @@
 # FOD-skills
 
-Claude Code와 Codex가 함께 읽는 작업 스킬 모음. 스킬 45개, Codex 개발 묶음 1개, 설치 스크립트 2개.
+여러 프로젝트(영상·SNS·블로그·앱 개발·AI 코딩)에서 쓴 작업 방식을 누구나 깔아 쓸 수 있게 일반화한 스킬 모음이다. Claude Code와 Codex가 같은 파일을 쓴다.
 
 ## 우선순위
-
-| 순위 | 무엇 |
+| 순서 | 무엇 |
 |---|---|
-| 1 | 실행 환경의 시스템 프롬프트·설정 |
-| 2 | 사람이 채팅으로 준 지시 |
-| 3 | 이 저장소의 스킬·묶음 |
+| 1 | 작업 환경의 시스템 프롬프트·설정 |
+| 2 | 사람의 지시 |
+| 3 | 프로젝트에 이미 있는 지침(AGENTS.md, CLAUDE.md 등) |
+| 4 | 이 저장소의 스킬 |
 
-- 모든 스킬 첫머리에 같은 줄이 있다(영문 원본을 그대로 둔 `bro`·`how` 제외).
-- 부딪혀서 결과가 달라졌으면 보고에 적는다.
-- 스킬에 적힌 시간·횟수·임계값은 기본값이고, 프로젝트 문서에 값이 있으면 그 값을 따른다.
+- 스킬은 기존 지침·설정을 고치거나 지우지 않는다.
+- 부딪쳐서 위를 따랐으면 마지막 보고에 무엇이 부딪쳤고 결과가 어떻게 달라졌는지 적는다.
+- 공통 원칙은 `operating-principles` 한 곳에만 있다.
 
 ## 설치
-
 | 환경 | 명령 |
 |---|---|
-| macOS·Linux·Git Bash | `bash install/install.sh [claude\|codex\|both] [--dry-run] [--project <dir>]` |
-| Windows PowerShell 5.1+ | `powershell -NoProfile -ExecutionPolicy Bypass -File install\install.ps1 [claude\|codex\|both] [--dry-run] [--project <dir>]` |
+| macOS·Linux·Git Bash | `./install.sh` |
+| Windows PowerShell | `powershell -NoProfile -ExecutionPolicy Bypass -File install.ps1` |
 
-| 옵션 | 하는 일 |
+| 옵션 (sh / ps1) | 뜻 |
 |---|---|
-| `claude` / `codex` / `both` | 복사할 곳: `~/.claude/skills/`, `${CODEX_HOME:-~/.codex}/skills/`, 둘 다(기본) |
-| `--dry-run` | 할 일만 출력하고 쓰지 않음 |
-| `--home <dir>` | 홈 대신 쓸 폴더(시험용, `CODEX_HOME` 무시) |
-| `--project <dir>` | 그 폴더에 `packs/codex-dev`의 `AGENTS.md`·`DECISIONS.md`·`ASSUMPTIONS.md` 설치 |
+| `--target claude\|codex\|both` / `-Target` | 설치 위치. 기본 both. Claude Code는 `~/.claude/skills`, Codex는 `$CODEX_HOME/skills`(없으면 `~/.codex/skills`) |
+| `--only a,b` / `-Only a,b` | 고른 스킬만 설치 |
+| `--dry-run` / `-DryRun` | 바꾸지 않고 할 일만 출력 |
+| `--project DIR` / `-Project DIR` | 개발 플레이북을 프로젝트 폴더에 설치(아래) |
 
-- [ ] 같은 이름의 스킬 폴더가 있으면 덮어쓰지 않고 건너뛴다.
-- [ ] 설정·인증 파일은 건드리지 않는다.
-- [ ] 기존 `AGENTS.md`는 표지 주석과 함께 아래에 이어 붙이고, 이미 붙였으면 건너뛴다.
-- [ ] 마지막 줄: `설치 N / 건너뜀 M / 전체 K`.
-- [ ] 업데이트: 바꿀 스킬 폴더를 지우거나 옮긴 뒤 다시 설치한다.
+- 같은 이름의 스킬 폴더가 이미 있으면 건너뛴다. 이 스크립트가 설치한 폴더(`.fod-skills` 표지 파일)만 새 버전으로 바꾼다.
+- 네트워크 호출과 설정 파일 수정은 하지 않는다.
 
-## 스킬 목록
+## 스킬 색인
 
-### 1. 일하는 방식
-
+### 공통
 | 스킬 | 언제 |
 |---|---|
-| `operating-principles` | 모든 작업의 시작, 판단이 갈릴 때 |
-| `delegation-loop` | 실행 작업을 서브에이전트에 맡길 때 |
-| `codex-delegation` | Codex CLI에 토의·검수·이미지 생성·GUI 조작을 맡길 때 |
-| `multi-ai-review` | 여러 AI 모델에게 토의·검수를 시킬 때 |
-| `evidence-status-report` | 진행·상태·원인 질문에 답할 때, 완료 보고 전 |
-| `user-task-guide` | 사람이 직접 해야 하는 일(로그인·결제·앱 설정)을 안내할 때 |
-| `project-docs` | 새 프로젝트 문서 체계를 잡거나 정리할 때 |
-| `hypothesis-experiment` | 형식·프롬프트·플레이북을 바꿔 보고 판정할 때 |
-| `reference-benchmark` | 잘된 레퍼런스를 재고 구조를 분해할 때 |
-| `idea-screening` | 아이디어·소재 후보를 거를 때 |
-| `paced-research` | 속도 제한을 지키며 웹·영상 자료를 모을 때 |
-| `performance-insights` | 게시 후 지표를 모으고 비교할 때 |
+| operating-principles | 모든 작업의 전제. 우선순위, 판단과 실행 분담, 승인 필요 행동, 비밀값 |
+| evidence-status-report | 진행·상태·원인 질문에 답할 때, 마지막 보고 |
+| project-docs | 문서 체계 만들기, 판단대기·runbook, 문서와 실제가 어긋날 때 |
+| user-task-guide | 사람이 직접 할 일(로그인, 결제, 콘솔 설정) 안내 |
 
-### 2. 콘텐츠 품질
-
+### 위임과 검수
 | 스킬 | 언제 |
 |---|---|
-| `fact-check-gate` | 숫자·고유명사·인용·데이터 그림이 들어갈 때 |
-| `korean-voice-review` | 사람이 쓴 한국어 대본·글을 내보내기 전 |
-| `frozen-content-rewrite` | 내용은 고정하고 문체만 바꿀 때(검사기 포함) |
-| `visual-output-qa` | 영상·이미지·화면 결과물을 채택하기 전(띠 스캔 스크립트 포함) |
-| `audio-tts-qa` | 나레이션·TTS 소리를 내보내기 전, 엔진을 바꿀 때 |
-| `short-video-pipeline` | 짧은 세로 영상을 꾸준히 만들 때 |
-| `asset-rights-check` | 남의 사진·영상·음악·글꼴을 넣기 전, 권리 신고가 왔을 때 |
-| `blog-post-pipeline` | 검색 유입용 블로그 글을 꾸준히 쓸 때 |
+| delegation-loop | 하위 에이전트에 일 맡기기, 긴 배치 감독, 반납 직후 확인 |
+| codex-delegation | Codex CLI에 구현·검수·생성 맡기기 |
+| multi-ai-review | 여러 모델 토의, 검수 결과 채택 필터 |
 
-### 3. 운영·개발 보조
-
+### 조사와 기획
 | 스킬 | 언제 |
 |---|---|
-| `safe-publish` | 게시하거나 자동·예약 게시 도구를 만들 때 |
-| `routine-ops` | 정기 루틴을 등록·점검·복구할 때 |
-| `safe-cleanup` | 디스크·프로세스 정리, 큰 폴더 이동 |
-| `windows-env-pitfalls` | Windows에서 스크립트·위임 프롬프트를 쓸 때 |
-| `cross-device-handoff` | 다른 기기로 작업을 넘기거나 받을 때 |
-| `external-tool-vetting` | 외부 도구·플러그인을 들이기 전 |
-| `service-access-hardening` | 소수 인원용 비공개 서비스를 열 때 |
-| `privacy-compliance-check` | 개인정보·위치정보를 다루거나 스토어 심사 전 |
-| `android-device-smoke` | APK를 실기기에서 확인할 때 |
+| paced-research | 웹·영상 자료를 차단 없이 모으기 |
+| reference-benchmark | 잘되는 레퍼런스 구조 분석 |
+| idea-screening | 새 주제·포맷 아이디어 거르기 |
+| hypothesis-experiment | 판정 기준을 먼저 정하는 실험, 프롬프트·스킬 개선 |
+| performance-insights | 게시 후 지표 수집과 원인 분석 |
 
-### 4. 개발(Codex 개발 묶음과 같이 씀)
-
+### 콘텐츠 제작
 | 스킬 | 언제 |
 |---|---|
-| `problem-definition` | 설계 전에 진짜 문제를 사람과 정할 때 |
-| `judgment` | 요구사항에 답이 없는 판단을 만났을 때 |
-| `default-stack` | 스택이 정해지지 않았을 때(React·NestJS·PostgreSQL) |
-| `design-doc` | 빌드 시작·끝에 설계도(DESIGN.md)를 맞출 때 |
-| `ui-baseline` | 웹 화면을 만들거나 고칠 때 |
-| `data-edge-tests` | CSV·JSON을 읽고 집계하는 코드를 만들 때 |
-| `http-roundtrip-test` | 웹 API 테스트를 만들 때 |
-| `data-exposure-guard` | 응답·화면·내보내기·로그에 고객 데이터가 나갈 때 |
-| `llm-feature-guard` | LLM 호출 기능이 있을 때 |
-| `security-check` | 웹 서비스를 다 만든 뒤 보안 확인 |
-| `mutation-check` | 완료라고 말하기 직전 테스트 확인 |
-| `counterexample-review` | 만든 코드를 요구사항과 대조해 결함을 찾을 때 |
-| `bug-fix` | 결함을 고칠 때 |
-| `explain-doc` | 빌드 끝에 설명 재료(EXPLAIN.md)를 정리할 때 |
-| `how` | 코드 동작·구조를 설명받을 때 |
-| `bro` | 직전 답을 쉬운 말로 다시 들을 때 |
+| fact-check-gate | 게시 전 사실 항목 1차 출처 확인, 데이터 화면 |
+| korean-voice-review | 한국어 글·대본의 AI 티와 말 흐름 검수 |
+| frozen-content-rewrite | 사실·순서를 고정하고 표현만 바꾸는 재작성 |
+| visual-output-qa | 영상·이미지·화면 결과물 검수, 크롭 좌표 실측 |
+| audio-tts-qa | 라우드니스 측정, 음성 합성 캐시·폴백·목소리 비교 |
+| short-video-pipeline | 짧은 영상 한 편의 단계·게이트·프레임 싱크 |
+| asset-rights-check | 외부 자산 권리 확인, 신고 대응 |
+| blog-post-pipeline | 정보 글 한 편의 초안부터 공개 후 확인까지 |
 
-## Codex 개발 묶음 (`packs/codex-dev/`)
+### 운영
+| 스킬 | 언제 |
+|---|---|
+| safe-publish | 게시 도구 기준, 중복 방지, 실패 뒤 규칙 |
+| routine-ops | 예약 작업 등록·백업·멈춤 감지·숨김 실행 |
+| safe-cleanup | 디스크·산출물·프로세스 정리, 폴더 이동 |
+| windows-env-pitfalls | Windows의 한글 인코딩·셸·AppData 가상화 함정 |
+| cross-device-handoff | 다른 PC로 인계, 폰으로 산출물 전달 |
+| external-tool-vetting | 외부 도구·플러그인·스킬 도입 전 점검 |
+| service-access-hardening | 지인·팀용 비공개 서비스의 접근 보호와 비용 보호 |
+| privacy-compliance-check | 개인정보 흐름표, 처리방침·스토어 표시 대조 |
+| android-device-smoke | 안드로이드 실기기 설치·흐름 확인 |
+
+### 개발 플레이북 (웹 서비스 빌드)
+| 스킬 | 언제 |
+|---|---|
+| problem-definition | 설계 전에 진짜 문제를 사람과 정할 때(PROBLEM.md) |
+| default-stack | 스택이 정해지지 않았을 때 React·NestJS·PostgreSQL 기본 구조 |
+| design-doc | 코드보다 먼저 DESIGN.md, 끝날 때 코드와 맞추기 |
+| judgment | 요구사항에 답이 없는 판단 나누기(DECISIONS.md·ASSUMPTIONS.md) |
+| ui-baseline | 실서비스 수준의 화면 디자인 기준 |
+| http-roundtrip-test | 실제 HTTP 요청으로 도는 API 테스트 |
+| data-edge-tests | CSV·JSON 읽기·집계에서 자주 틀리는 지점 |
+| data-exposure-guard | 응답·내보내기·로그의 고객 데이터 노출 막기 |
+| llm-feature-guard | LLM 호출 기능의 주입·유출·비용 폭주 막기 |
+| security-check | 완성 뒤 외부 입력 지점 보안 점검 |
+| counterexample-review | 요구사항 대조로 반례 찾기(코드 수정 없음) |
+| mutation-check | 테스트가 실제로 결함을 잡는지 확인 |
+| bug-fix | 재현부터 시작하는 최소 수정 |
+| explain-doc | 사람이 읽을 EXPLAIN.md 정리 |
+| how | 코드 동작·위치 질문에 답하기 |
+| bro | 직전 답을 쉬운 말로 다시 말하기 |
+
+## 개발 플레이북 쓰는 법
+`playbooks/codex-dev/`는 위 개발 스킬을 묶는 프로젝트 지침과 템플릿이다.
 
 | 파일 | 역할 |
 |---|---|
-| `AGENTS.md` | 프로젝트 지침(설치하면 과제 폴더에 들어감) |
-| `docs/WORKFLOW.md` | 사람이 따라가는 기본 순서·검수 지점·상황별 할 일 |
-| `templates/PROBLEM_PROMPT.md` | 문제 정의 세션 지시 |
-| `templates/BUILD_PROMPT.md` | 빌드 1·2단계 지시 |
-| `templates/VERIFY_PROMPT.md` | 검증 세션 지시 |
-| `templates/REQUIREMENTS.md` | 요구사항 표 틀 |
-| `templates/DECISIONS.md` | 판단대기·판단기록 틀 |
-| `templates/ASSUMPTIONS.md` | 직접 정한 가정 기록 틀 |
+| AGENTS.md | 작업 규칙(우선순위, 진행, 스킬 고르기, 환경과 비용) |
+| docs/WORKFLOW.md | 단계별 흐름과 검수 지점 |
+| templates/ | REQUIREMENTS·DECISIONS·ASSUMPTIONS와 단계별 프롬프트 |
 
-1. 위 설치 명령에 `--project <과제 폴더>`를 붙여 설치한다.
-2. `docs/WORKFLOW.md`의 기본 순서를 따른다.
-
-## 폴더
-
+```bash
+./install.sh --project path/to/app                 # 플레이북만
+./install.sh --project path/to/app --target codex  # 플레이북 + Codex 스킬
 ```
-skills/<name>/SKILL.md        스킬 본문
-skills/<name>/references/     보조 파일(스크립트·프롬프트)
-packs/codex-dev/              Codex 개발 묶음
-install/                      설치 스크립트
-NOTICE.md                     참고·이식 출처와 라이선스
-```
+- 프로젝트에 AGENTS.md가 있으면 덮어쓰지 않고 끝에 한 번만 이어 붙인다(표지 주석으로 중복 방지).
+- DECISIONS.md·ASSUMPTIONS.md는 없을 때만 복사한다.
+
+## 로드맵
+| 단계 | 내용 |
+|---|---|
+| 1 (지금) | Windows PC의 작업 방식을 스킬로 정리 |
+| 2 | macOS 기기들의 작업 방식을 같은 규격으로 합치기 |
+| 3 | 스킬 모음을 하나의 하네스로 묶기 |
+
+## 기여 규칙
+- 스킬 한 개는 `skills/<name>/SKILL.md` 한 파일. frontmatter는 `name`, `description` 두 줄.
+- 한 내용은 한 스킬에만 둔다. 겹치면 이름으로 가리킨다.
+- 특정 채널·제품·과제 전용 문장을 넣지 않는다.
+- 커밋 전에 `python tools/check_public.py`로 노출 항목 0건을 확인한다.
 
 ## 출처
-
-| 대상 | 출처 |
-|---|---|
-| 1~3묶음 | 직접 작성 |
-| `judgment` | FOD-team-org/fod-harness `fodh-judgment`를 고쳐 씀 |
-| `how`·`bro`·`bug-fix` | pstack(MIT, Lauren Tan)에서 이식 |
-| 보안·테스트·UI 스킬 | 공개 자료를 참고해 새로 씀, 원문 미포함 |
-| 상세 | `NOTICE.md` |
-
-## 라이선스
-
-| 대상 | 라이선스 |
-|---|---|
-| 저장소 전체 | MIT (`LICENSE`) |
-| 이식·참고 자료 | 각 원본 라이선스 (`NOTICE.md`) |
-
-## 다음 단계
-
-- [ ] macOS·MacBook 작업 방식 취합
-- [ ] 겹치는 스킬 합치기
-- [ ] FOD-team-org/fod-harness와 합쳐 하네스(설치·설정 일체)로 확장
+외부 자료를 참고한 스킬과 라이선스는 [NOTICE.md](NOTICE.md)에 있다.
