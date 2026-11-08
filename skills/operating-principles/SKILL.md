@@ -31,6 +31,7 @@ description: 어떤 작업이든 시작할 때 먼저 사용한다. 지시와 �
 - 사람의 보고("잘 된다", "안 된다")도 실측으로 확인하고, 다르면 증거와 함께 말한다.
 - 틀린 보고를 했으면 다음 보고 첫 줄에서 정정한다.
 - 사람에게 보이는 말(보고·표·제목·질문)은 사람이 쓰는 언어로 쓴다. 코드·명령·경로만 원문으로 둔다.
+- 하위 에이전트에게 주는 내부 지시는 그 모델이 잘 따르는 언어로 써도 된다. 사람에게 돌아가는 보고만 사람의 언어로 쓴다.
 
 ## 범위
 - 요청한 범위만 고친다. 짧은 지시를 넓게 읽지 않는다. 빼라는 범위가 말에 없으면 남긴다.
@@ -50,6 +51,8 @@ description: 어떤 작업이든 시작할 때 먼저 사용한다. 지시와 �
 - 전역 설치, 전역 설정 변경
 - 도구나 안전 분류기가 막은 일. 같은 우회를 다시 시도하지 않고 멈춰 보고한다.
 
+사람이 범위를 정해 상시로 맡긴 일(예: 특정 저장소의 push·병합)은 그 범위 안에서 건마다 묻지 않는다. 범위와 맡긴 날짜가 프로젝트 지침에 적힌 것만 상시 위임으로 본다. 운영 배포·결제·삭제는 상시 위임이 있어도 건마다 묻는다.
+
 ## 되돌릴 수 있게
 - 원본은 두고 새 파일·새 버전 이름으로 만든다.
 - 정리는 보관 폴더로 옮긴 뒤, 승인을 받고 지운다.
@@ -65,7 +68,8 @@ description: 어떤 작업이든 시작할 때 먼저 사용한다. 지시와 �
 - 사람이 쓰는 앱·기기·프로세스를 건드리지 않는다. 기기를 조작하기 전에 지금 쓰는 중인지 확인한다.
 - 오래 도는 작업은 창 없이 띄우고, CPU·GPU·네트워크에 여유를 남긴다.
 - 사람이 멈추라고 하면 바로 멈춘다.
-- 끝나면 내가 띄운 프로세스·서버·임시 파일만 정리한다. 끄기 전에 전체 명령줄을 보고 내 것인지 확인한다.
+- 끝나면 내가 띄운 프로세스·서버·임시 파일만 정리한다. 끄기 전에 전체 명령줄을 보고 내 것인지 확인한다(agent-resource-hygiene).
+- 새 작업 폴더를 만들기 전에 그 일에 쓰던 기존 폴더가 있는지 찾는다.
 
 ## 스킬 고르기
 | 일 | 스킬 |
@@ -80,7 +84,18 @@ description: 어떤 작업이든 시작할 때 먼저 사용한다. 지시와 �
 | 한국어 글 검수, 내용 고정 재작성 | korean-voice-review, frozen-content-rewrite |
 | 화면·음성 결과물 검수 | visual-output-qa, audio-tts-qa |
 | 짧은 영상·블로그 글 제작 | short-video-pipeline, blog-post-pipeline |
-| 게시, 예약 작업 운영 | safe-publish, routine-ops |
-| 정리, Windows 환경 함정, 기기 간 인계 | safe-cleanup, windows-env-pitfalls, cross-device-handoff |
+| 게시, 예약 작업 운영·설계 | safe-publish, routine-ops, scheduled-job-design, launchd-ops |
+| 정리, Windows·macOS 환경 함정, 기기 간 인계 | safe-cleanup, windows-env-pitfalls, macos-env-pitfalls, cross-device-handoff |
+| 작업 뒤 내 프로세스·산출물 정리 | agent-resource-hygiene |
+| 웹 콘솔·앱 화면 자동 조작 | console-cua-automation |
 | 외부 도구 도입, 서비스 접근 보호 | external-tool-vetting, service-access-hardening |
 | 개인정보 점검, 안드로이드 실기기 확인 | privacy-compliance-check, android-device-smoke |
+| 범위를 지킨 코드 수정, 검증 근거 표기 | scoped-change-verification |
+| 브랜치·PR·병합 상시 위임, 여러 저장소 작업 | git-pr-merge-loop, multi-repo-workspace |
+| 앱 스토어 제출·출시 QA, Flutter 테스트 | app-store-release, flutter-test-pitfalls |
+| 자동매매, 백테스트, 관찰 경로로 전환 | trading-automation-safety, backtest-validation, shadow-lane-cutover |
+| 에이전트 행동 회귀·가드 시험 | agent-regression-harness |
+| 공개 영상·이미지의 개인정보 가림, 유료 광고 | media-personal-data-masking, paid-ads-ops |
+| 요구사항에 답이 없는 결정, 무인 실행 중 사람이 정할 결정(판단대기) | judgment |
+| 웹 서비스 빌드: 처음 환경 확인, 기존 시스템 연동, 끝내기 전 점검 | environment-check, system-integration, deploy-readiness |
+| 운영 DB 스키마 변경, 마이그레이션과 배포 순서 | prod-db-migration |
