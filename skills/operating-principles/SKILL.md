@@ -99,3 +99,48 @@ description: 어떤 작업이든 시작할 때 먼저 사용한다. 지시와 �
 | 요구사항에 답이 없는 결정, 무인 실행 중 사람이 정할 결정(판단대기) | judgment |
 | 웹 서비스 빌드: 처음 환경 확인, 기존 시스템 연동, 끝내기 전 점검 | environment-check, system-integration, deploy-readiness |
 | 운영 DB 스키마 변경, 마이그레이션과 배포 순서 | prod-db-migration |
+
+### 헷갈릴 때
+- 모든 일의 원칙과 승인 기준 → operating-principles
+- 요구사항에 답이 없는 결정, 무인 실행 중 사람이 정할 결정 → judgment
+- 진행·상태·원인 질문에 답하기 → evidence-status-report. 코드 검증 결과를 적는 방법은 scoped-change-verification
+- 사람이 직접 해야 하는 일(로그인, 결제, 키 발급) 안내 → user-task-guide
+- 프로젝트 문서 체계 → project-docs
+- 방금 말을 쉬운 말로 다시 → bro. 구조·동작 설명 → how
+- 하위 에이전트에게 일 맡기기, 긴 배치 감독 → delegation-loop
+- Codex CLI를 부르는 방법(브리프, exec, 결과 회수) → codex-delegation. 감독은 delegation-loop와 함께
+- 정답 없는 기획·전략·글을 다른 모델에게 토의·검수 → multi-ai-review. 코드 교차 검수는 codex-delegation(호출)과 multi-ai-review(라운드·판정 형식)
+- 바꾼 뒤 에이전트 행동이 나빠지지 않았는지 정기 확인 → agent-regression-harness. 두 안 중 나은 것 고르기는 hypothesis-experiment
+- 다른 PC로 작업 옮기기 → cross-device-handoff
+- 처음 보는 환경 확인 → environment-check. 진짜 문제 정하기 → problem-definition. 설계도 → design-doc
+- 스택 기본 구조 → default-stack. 디자인 방향 → design-direction. 화면 기본기 → ui-baseline
+- 이미 있는 외부 API·DB·인증과 연동 → system-integration
+- 남이 받아 띄울 서비스를 끝내기 전 점검 → deploy-readiness. 운영 DB 스키마 변경 배포 → prod-db-migration
+- 여러 저장소 작업 공간 → multi-repo-workspace. push·PR·병합 상시 위임 → git-pr-merge-loop
+- 결함 재현·원인 찾아 고치기 → bug-fix. 범위를 지정한 수정과 검증 근거 표기 → scoped-change-verification
+- 코드를 고치지 않고 요구사항 대조로 결함 찾기 → counterexample-review. 테스트가 결함을 잡는지 → mutation-check
+- API 테스트 → http-roundtrip-test. CSV·JSON 처리 → data-edge-tests. LLM 호출 기능 → llm-feature-guard
+- 설명 문서 → explain-doc. Flutter 테스트 → flutter-test-pitfalls
+- 다 만든 서비스의 외부 입력 지점 보안 점검 → security-check
+- 코드가 내보내는 응답·CSV·로그의 고객 데이터 → data-exposure-guard
+- 처리방침·스토어 개인정보 표시와 실제 수집 대조 → privacy-compliance-check
+- 영상·이미지·스크린샷에 보이는 개인정보, 시연 데이터 → media-personal-data-masking
+- 개인 PC·작은 서버에서 지인·팀용 비공개 서비스 열기 → service-access-hardening
+- 외부 도구·플러그인·MCP 도입 → external-tool-vetting
+- 스토어 제출, 심사 반려, 출시 QA → app-store-release
+- 안드로이드 APK를 실기기에 깔아 흐름 확인 → android-device-smoke
+- 스토어 개인정보 표시는 privacy-compliance-check(보안·개인정보)
+- 숫자·인용·고유명사 사실 확인 → fact-check-gate
+- 한국어 문체·AI 티·말 흐름 검수 → korean-voice-review. 내용을 고정한 문체 변경 → frozen-content-rewrite
+- 화면 결과물 검수 → visual-output-qa. 소리 → audio-tts-qa. 외부 자료 권리 → asset-rights-check
+- 플랫폼에 올리기 → safe-publish. 제작 공정 → short-video-pipeline, blog-post-pipeline
+- 대량 웹 조사 → paced-research. 레퍼런스 분석 → reference-benchmark. 아이디어 거르기 → idea-screening
+- 두 안 비교, 고친 효과 재기 → hypothesis-experiment
+- 게시물·광고 성과 수집과 원인 분석 → performance-insights
+- 광고 만들기·교체·켜기·매일 점검 → paid-ads-ops. 원인 분석은 performance-insights
+- 예약 작업 등록·멈춤 감지·복구 → routine-ops. 예약 작업 설계(실행 방식, 비용, 수율) → scheduled-job-design. macOS launchd 등록 → launchd-ops
+- 사람이 요청한 디스크·폴더·프로세스 정리 → safe-cleanup. 에이전트가 자기가 띄운 것 치우기 → agent-resource-hygiene
+- OS 함정 → windows-env-pitfalls, macos-env-pitfalls
+- 웹 콘솔·앱 화면 자동 조작 → console-cua-automation
+- 주문 봇 → trading-automation-safety. 백테스트 → backtest-validation
+- 돌고 있는 파이프라인을 새 구현·LLM 판정으로 바꿔 넣기 → shadow-lane-cutover
