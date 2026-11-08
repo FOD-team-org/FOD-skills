@@ -21,6 +21,7 @@
 - 디지털정부 디자인 시스템 KRDS (참고, 원문 미사용. 라이선스 미확인으로 공개 수치와 색 토큰 값만 사용) — https://www.krds.go.kr
 - Material Design 3 (참고, 원문 미사용) — https://m3.material.io
 - Apple Human Interface Guidelines (참고, 원문 미사용) — https://developer.apple.com/design/human-interface-guidelines
+- Figma 리소스 라이브러리 "색상 조합" 글 (참고, 원문 미사용. 색 속성·조합 유형·분위기 연결의 개념만 참고했고 팔레트 이름과 색 값은 가져오지 않음) — https://www.figma.com/ko-kr/resource-library/color-combinations/
 - 레퍼런스 갤러리(Mobbin, Refero, Recent, Land-book, Lapa Ninja, SaaS Landing Page, Awwwards, Siteinspire, Dribbble)는 이름과 용도만 적었고 화면·문구를 가져오지 않았습니다.
 - 프리셋에 적은 글꼴(Pretendard, SUIT, Noto Sans KR, Noto Serif KR, Gowun Batang, IBM Plex Sans KR, Do Hyeon, Space Grotesk, Source Serif 4, JetBrains Mono, Atkinson Hyperlegible Next)은 SIL OFL입니다. 글꼴 파일은 이 저장소에 들어 있지 않습니다. Pretendard GOV는 라이선스를 따로 확인하지 못했습니다.
 
