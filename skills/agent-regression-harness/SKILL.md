@@ -5,7 +5,7 @@ description: 에이전트(비서·예약 루틴·코딩 하네스)의 프롬프�
 
 # 에이전트 회귀 측정
 
-제품 안 LLM 기능의 방어는 llm-feature-guard, 테스트가 결함을 잡는지는 mutation-check를 따른다. 이 스킬은 에이전트 자체의 행동을 잰다.
+제품 안 LLM 기능의 방어는 llm-feature-guard, 테스트가 결함을 잡는지는 mutation-check, 고친 안이 더 나은지 비교해 고르는 일은 hypothesis-experiment를 따른다. 이 스킬은 바꾼 뒤에도 정해 둔 행동이 나빠지지 않았는지를 고정 시나리오로 지킨다.
 
 ## 언제
 - 에이전트의 지침·모델·스킬을 바꾼 뒤

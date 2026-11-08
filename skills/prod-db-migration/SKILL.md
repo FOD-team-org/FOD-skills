@@ -11,7 +11,7 @@ description: 운영 DB의 스키마를 바꾸는 마이그레이션을 코드 �
 
 ## 먼저 볼 것
 1. 마이그레이션 파일에서 `DROP`, `TRUNCATE`, `DELETE`, 컬럼 이름·타입 변경, `NOT NULL` 추가를 찾는다. 있으면 따로 보고한다. 지운 데이터는 백업 없이는 되돌릴 수 없다.
-2. 배포 파이프라인(빌드 명령, 설치 후 스크립트, 릴리스 훅, 시작 명령)이 마이그레이션을 자동으로 돌리는지 본다. 자동이면 "코드 먼저, DB 나중"이 실제로는 동시에 일어난다.
+2. 배포 파이프라인(빌드 명령, 설치 후 스크립트, 릴리스 훅, 시작 명령)이 마이그레이션을 자동으로 돌리는지 본다. 자동이면 "코드 먼저, DB 나중"이 실제로는 동시에 일어난다. default-stack 구조는 서버가 시작할 때 마이그레이션을 적용하므로, 삭제형 변경은 컬럼을 안 쓰는 코드 배포와 삭제 마이그레이션을 두 번의 배포로 나눈다.
 3. 지금 운영 중인 옛 코드와 배치 작업이 바뀌는 컬럼을 쓰는지 grep한다.
 
 ## 순서
@@ -37,4 +37,4 @@ description: 운영 DB의 스키마를 바꾸는 마이그레이션을 코드 �
 - 운영 접속 문자열을 셸에 남기기, 출력하기
 
 ## 관련 스킬
-multi-repo-workspace, deploy-readiness, judgment, operating-principles
+multi-repo-workspace, default-stack, deploy-readiness, judgment, operating-principles
