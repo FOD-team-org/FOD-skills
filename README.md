@@ -15,6 +15,11 @@
 - 공통 원칙은 `operating-principles` 한 곳에만 있다.
 
 ## 설치
+```bash
+git clone https://github.com/FOD-team-org/FOD-skills.git
+cd FOD-skills && ./install.sh --target codex --project <앱 폴더>
+```
+
 | 환경 | 명령 |
 |---|---|
 | macOS·Linux·Git Bash | `./install.sh` |
@@ -84,6 +89,7 @@
 ### 개발 플레이북 (웹 서비스 빌드)
 | 스킬 | 언제 |
 |---|---|
+| environment-check | 처음 보는 작업 환경에서 코드를 쓰기 전에 막힌 것 확인 |
 | problem-definition | 설계 전에 진짜 문제를 사람과 정할 때(PROBLEM.md) |
 | default-stack | 스택이 정해지지 않았을 때 React·NestJS·PostgreSQL 기본 구조 |
 | design-doc | 코드보다 먼저 DESIGN.md, 끝날 때 코드와 맞추기 |
@@ -92,12 +98,14 @@
 | ui-baseline | 테마와 무관한 화면 기본기 |
 | http-roundtrip-test | 실제 HTTP 요청으로 도는 API 테스트 |
 | data-edge-tests | CSV·JSON 읽기·집계에서 자주 틀리는 지점 |
+| system-integration | 이미 있는 외부 API·DB·인증과 붙는 기능 |
 | data-exposure-guard | 응답·내보내기·로그의 고객 데이터 노출 막기 |
 | llm-feature-guard | LLM 호출 기능의 주입·유출·비용 폭주 막기 |
 | security-check | 완성 뒤 외부 입력 지점 보안 점검 |
 | counterexample-review | 요구사항 대조로 반례 찾기(코드 수정 없음) |
 | mutation-check | 테스트가 실제로 결함을 잡는지 확인 |
 | bug-fix | 재현부터 시작하는 최소 수정 |
+| deploy-readiness | 남이 받아 띄울 서비스를 끝내기 전 깨끗한 복사본 점검 |
 | explain-doc | 사람이 읽을 EXPLAIN.md 정리 |
 | how | 코드 동작·위치 질문에 답하기 |
 | bro | 직전 답을 쉬운 말로 다시 말하기 |
