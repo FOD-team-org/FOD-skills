@@ -119,10 +119,10 @@ description: 어떤 작업이든 시작할 때 먼저 사용한다. 지시와 �
 - 여러 저장소 작업 공간 → multi-repo-workspace. push·PR·병합 상시 위임 → git-pr-merge-loop
 - 결함 재현·원인 찾아 고치기 → bug-fix. 범위를 지정한 수정과 검증 근거 표기 → scoped-change-verification
 - 코드를 고치지 않고 요구사항 대조로 결함 찾기 → counterexample-review. 테스트가 결함을 잡는지 → mutation-check
-- API 테스트 → http-roundtrip-test. CSV·JSON 처리 → data-edge-tests. LLM 호출 기능 → llm-feature-guard
+- API 테스트 → http-roundtrip-test. CSV·JSON을 읽고 묶고 집계하기 → data-edge-tests. LLM 호출 기능 → llm-feature-guard
 - 설명 문서 → explain-doc. Flutter 테스트 → flutter-test-pitfalls
 - 다 만든 서비스의 외부 입력 지점 보안 점검 → security-check
-- 코드가 내보내는 응답·CSV·로그의 고객 데이터 → data-exposure-guard
+- 응답·CSV 내보내기·로그로 고객 데이터를 내보내는 코드 → data-exposure-guard 하나로 된다. CSV 셀 처리(BOM, 따옴표, 수식 실행 막기)도 여기 있다. 다 만든 서비스 전체 점검이면 security-check, 처리방침 대조면 privacy-compliance-check를 더한다
 - 처리방침·스토어 개인정보 표시와 실제 수집 대조 → privacy-compliance-check
 - 영상·이미지·스크린샷에 보이는 개인정보, 시연 데이터 → media-personal-data-masking
 - 개인 PC·작은 서버에서 지인·팀용 비공개 서비스 열기 → service-access-hardening
